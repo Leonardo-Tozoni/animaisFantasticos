@@ -1,37 +1,59 @@
-const menu = document.querySelector('.menu');
-
-menu.classList.add('ativo', 'teste');
-menu.classList.remove('azul');
-
-if(menu.classList.contains('azul')) {
-  menu.classList.add('possui-azul');
-} else {
-  menu.classList.add('nao-possui-azul');
-}
-
-menu.className += ' vermelho';
-
-console.log(menu.className);
-
-// console.log(menu.classList.);
-
-const animais = document.querySelector('.animais');
-console.log(animais.attributes['data-texto']);
-
 const img = document.querySelector('img');
 
-const srcImg = img.getAttribute('alt');
+function callback(event) {
+  console.log(event);
+}
 
-img.setAttribute('alt', 'É uma raposa');
+// img.addEventListener('click', callback);
 
-const possuiAlt = img.hasAttribute('alt');
-console.log(possuiAlt);
+const animaisLista = document.querySelector('.animais-lista');
 
-console.log(srcImg);
+function callbackLista(event) {
+  console.log(event.currentTarget);
+  console.log(event.target);
+  console.log(event.type);
+}
 
-const carro = {
-  portas: 4,
-  andar: function(km) {
-    console.log(`Andou ${km}`);
+// animaisLista.addEventListener('click', callbackLista);
+
+const linkExterno = document.querySelector('a[href^="http"]');
+
+function handleLinkExterno(event) {
+  event.preventDefault();
+  // console.log(event);
+  console.log(this.getAttribute('href'));
+  console.log(event.currentTarget);
+}
+
+linkExterno.addEventListener('click', handleLinkExterno);
+
+const h1 = document.querySelector('h1');
+
+function handleEvent(event) {
+  console.log(event.type, event);
+}
+
+// h1.addEventListener('click', handleEvent);
+// h1.addEventListener('mouseenter', handleEvent);
+// h1.addEventListener('mousemove', handleEvent);
+
+// window.addEventListener('scroll', handleEvent);
+// window.addEventListener('resize', handleEvent);
+
+function handleKeyboard(event) {
+  if(event.key === 'a') {
+    document.body.classList.toggle('azul');
   }
 }
+
+window.addEventListener('keydown', handleKeyboard);
+
+const imgs = document.querySelectorAll('img');
+
+function handleImg(event) {
+  console.log(event.currentTarget.getAttribute('src'));
+}
+
+imgs.forEach((img) => {
+  img.addEventListener('click', handleImg);
+});
