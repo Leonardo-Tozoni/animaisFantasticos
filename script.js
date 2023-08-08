@@ -1,44 +1,21 @@
-// Quando o usuário clicar nos links internos do site,
-// adicione a classe ativo ao item clicado e remova dos
-// demais itens caso eles possuam a mesma. Previna
-// o comportamento padrão desses links
-const linksInternos = document.querySelectorAll('a[href^="#"]');
+// Duplique o menu e adicione ele em copy
+const menu = document.querySelector('.menu');
+const copy = document.querySelector('.copy');
 
-function handleLink(event) {
-  event.preventDefault();
-  linksInternos.forEach((link) => {
-    link.classList.remove('ativo');
-  });
-  event.currentTarget.classList.add('ativo');
-}
+const cloneMenu = menu.cloneNode(true);
+copy.appendChild(cloneMenu);
 
-linksInternos.forEach((link) => {
-  link.addEventListener('click', handleLink);
-})
-
-// Selecione todos os elementos do site começando a partir do body,
-// ao clique mostre exatamente quais elementos estão sendo clicados
-const todosElementos = document.querySelectorAll('body *');
-
-function handleElemento(event) {
-  event.currentTarget.remove();
-}
-
-// todosElementos.forEach((elemento) => {
-//   elemento.addEventListener('click', handleElemento);
-// })
-
-// Utilizando o código anterior, ao invés de mostrar no console,
-// remova o elemento que está sendo clicado, o método remove() remove um elemento
+// Selecione o primeiro DT da dl de Faq
+const faq = document.querySelector('.faq');
+const primeiroDt = faq.querySelector('dt');
 
 
-// Se o usuário clicar na tecla (t), aumente todo o texto do site. 
+// Selecione o DD referente ao primeiro DT
+const proximoDD = primeiroDt.nextElementSibling;
 
-function handleClickT(event) {
-  console.log(event.key);
-  if(event.key === 't') {
-    document.documentElement.classList.toggle('textomaior');
-  }
-}
+console.log(proximoDD);
 
-window.addEventListener('keydown', handleClickT);
+// Substitua o conteúdo html de .faq pelo de .animais
+const animais = document.querySelector('.animais');
+
+faq.innerHTML = animais.innerHTML;

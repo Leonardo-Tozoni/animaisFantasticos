@@ -1,59 +1,40 @@
-const img = document.querySelector('img');
+// const h1 = document.querySelector('h1');
+// const animaisLista = document.querySelector('.animais-descricao');
+// console.log(h1.innerHTML)
+// console.log(h1.outerHTML)
 
-function callback(event) {
-  console.log(event);
-}
+// // h1.outerHTML = '<p>Novo Título</p>';
+// // console.log(animaisLista.innerHTML);
 
-// img.addEventListener('click', callback);
+// const lista = document.querySelector('.animais-lista');
 
-const animaisLista = document.querySelector('.animais-lista');
+// console.log(lista.children[--lista.children.length]);
+// console.log(lista.querySelector('li:last-child'));
 
-function callbackLista(event) {
-  console.log(event.currentTarget);
-  console.log(event.target);
-  console.log(event.type);
-}
+// console.log(lista.previousSibling);
 
-// animaisLista.addEventListener('click', callbackLista);
+// const animais = document.querySelector('.animais');
+// const contato = document.querySelector('.contato');
+// const titulo = contato.querySelector('.titulo');
 
-const linkExterno = document.querySelector('a[href^="http"]');
+// const mapa = document.querySelector('.mapa');
 
-function handleLinkExterno(event) {
-  event.preventDefault();
-  // console.log(event);
-  console.log(this.getAttribute('href'));
-  console.log(event.currentTarget);
-}
+// contato.replaceChild(lista, titulo);
 
-linkExterno.addEventListener('click', handleLinkExterno);
+// // contato.insertBefore(animais, mapa);
+
+// const novoh1 = document.createElement('h1');
+// novoh1.innerText = 'Novo Título';
+// novoh1.classList.add('titulo');
+
+// mapa.appendChild(novoh1);
+
+// console.log(novoh1);
 
 const h1 = document.querySelector('h1');
+const faq = document.querySelector('.faq');
 
-function handleEvent(event) {
-  console.log(event.type, event);
-}
+const cloneH1 = h1.cloneNode(true);
 
-// h1.addEventListener('click', handleEvent);
-// h1.addEventListener('mouseenter', handleEvent);
-// h1.addEventListener('mousemove', handleEvent);
-
-// window.addEventListener('scroll', handleEvent);
-// window.addEventListener('resize', handleEvent);
-
-function handleKeyboard(event) {
-  if(event.key === 'a') {
-    document.body.classList.toggle('azul');
-  }
-}
-
-window.addEventListener('keydown', handleKeyboard);
-
-const imgs = document.querySelectorAll('img');
-
-function handleImg(event) {
-  console.log(event.currentTarget.getAttribute('src'));
-}
-
-imgs.forEach((img) => {
-  img.addEventListener('click', handleImg);
-});
+cloneH1.classList.add('azul');
+faq.appendChild(cloneH1);
